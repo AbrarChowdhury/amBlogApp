@@ -1,11 +1,15 @@
+import Layout from "./components/layout/Layout";
 import Blog from "./pages/blog";
 import Blogs from "./pages/blogs";
-
+ 
 function App() {
   return (
     <div className="App">
-      <Blog/>
-      <Blogs/>
+      <Layout>
+        <Blogs/>
+        <Blog/>
+      </Layout>
+      
     </div>
   );
 }
