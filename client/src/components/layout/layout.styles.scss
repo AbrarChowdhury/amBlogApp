@@ -1,4 +1,26 @@
 .layout{
+    .banner {
+        margin-bottom: 150px;
+            h1 {
+                font-size: 70px;
+                font-weight: 300;
+                color: #223464;
+                text-align: center;
+                margin-bottom: 0;
+            }
+            p {
+                color: #81648E;
+                font-size: 30px;
+                margin-top: -90px;
+                text-align: center;
+                img {
+                    padding-top: 0;
+                    height: 150px;
+                    transform: translate(-30px,90px);
+                }
+    
+            }
+        }
     .amView{
         width: 80%;
         padding: 0 10%;

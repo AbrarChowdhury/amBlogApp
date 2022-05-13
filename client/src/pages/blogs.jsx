@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material'
 import BlogCard from '../components/blogCard/BlogCard'
+import Pagination from '@mui/material/Pagination';
 function Blogs() {
   return (
     <div>
@@ -13,6 +14,9 @@ function Blogs() {
           )
         }
       </Grid>
+      <div style={{display:"flex", justifyContent:"center", padding:"20px"}}>
+        <Pagination  count={10} variant="outlined" color='primary' size='large'/>
+      </div>
     </div>
   )
 }
