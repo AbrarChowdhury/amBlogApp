@@ -1,16 +1,20 @@
 import {Card, CardActionArea , CardContent, Typography} from "@mui/material"
-
-function BlogCard() {
+import { useNavigate } from "react-router-dom";
+function BlogCard({title, content, date, id}) {
+  let navigate = useNavigate();
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card onClick={()=>navigate(`/blog/${id}`)}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h2" component="div">
+          <Typography variant="h2" component="div">
             Lizard
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" gutterBottom>
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            09/01/2022
           </Typography>
         </CardContent>
       </CardActionArea>
