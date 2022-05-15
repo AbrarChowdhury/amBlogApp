@@ -3,6 +3,7 @@ import Navbar from "../navbar/Navbar"
 import { Container } from '@mui/material'
 import amView from "../../assets/skyline-no-cloud.png"
 import phineas from "../../assets/phineas.png"
+import ferb from "../../assets/ferb.svg"
 import './layout.styles.scss'
 function Layout({children}) {
   return (
@@ -19,7 +20,7 @@ function Layout({children}) {
         </Container>
         <img className='amView' src={amView} alt="" />
         <footer>
-          <p>Abrar is an amazing developer, you should hire him!</p>
+          <p>Abrar is an awesome developer, you should hire him!</p>
         </footer>
     </div>
   )

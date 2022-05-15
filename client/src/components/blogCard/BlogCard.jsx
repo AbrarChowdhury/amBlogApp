@@ -1,6 +1,7 @@
 import {Card, CardActionArea , CardContent, Typography} from "@mui/material"
 import { useNavigate } from "react-router-dom";
 function BlogCard({title, content, date, id}) {
+  
   let navigate = useNavigate();
   return (
     <Card onClick={()=>navigate(`/blog/${id}`)}>

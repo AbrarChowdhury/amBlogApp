@@ -1,0 +1,17 @@
+nav{
+    padding: 5vh 5vw;
+    img{
+        width: 100px;
+        height: 100px;
+        &:hover{
+            cursor: pointer;
+            opacity: .7;
+            transition-duration: 0.5s;
+        }
+    }
+    .btn{
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+}

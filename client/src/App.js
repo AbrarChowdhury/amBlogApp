@@ -9,14 +9,16 @@ import {
 function App() {
   return (
     <div className="App">
+      <Router>  
       <Layout>
-      <Router>
+      
         <Routes>
           <Route path="/" element={<Blogs/>}/>
           <Route path="/blog/:id" element={<Blog/>}/>
         </Routes>
-      </Router>
+      
       </Layout>
+      </Router>
     </div>
   );
 }
