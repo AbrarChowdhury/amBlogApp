@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <nav>
       <Stack spacing={2} direction="row" justifyContent="space-between" >
-        <img src={am} alt="am" />
+        <img src={am} alt="am" onClick={()=>navigate("/")}/>
         <Button className='btn' variant="outlined" size="large" sx={ { borderRadius: 2 } }>add new post</Button>
       </Stack>
     </nav>

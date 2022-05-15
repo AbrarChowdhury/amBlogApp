@@ -1,0 +1,30 @@
+{
+  "name": "amBlogProject",
+  "version": "1.0.0",
+  "description": "1. Blog List Page\r - [ ] This page displays the list of all blog posts in a paginated list view.\r - [ ] When a user clicks on a list item it opens the blog view page to display the blog\r content.\r - [ ] The page have Add New Post action button that open a model to create a new\r post\r - [ ] Each post has 3 fields Title, Content, Date.\r 2. Blog View Page\r - [ ] This page displays the content of a blog\r - [ ] It should display the comments on this post in a nested tree.\r - [ ] The page should have a comment box to add new comments on the post.\r - [ ] The latest comment should be displayed first at each level.\r - [ ] Use the design given in the image below to implement the Blog view page.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"nodemon index.js\" \"cd client && npm start\"",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbrarChowdhury/amBlogApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbrarChowdhury/amBlogApp/issues"
+  },
+  "homepage": "https://github.com/AbrarChowdhury/amBlogApp#readme",
+  "dependencies": {
+    "concurrently": "^7.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.3.3"
+  }
+}
