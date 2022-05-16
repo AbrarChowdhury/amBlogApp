@@ -5,7 +5,7 @@ const router = express.Router();
 router.route('/api/comment')
     .post(createComment)
 
-router.route('/api/comment/:postId')
+router.route('/api/comments/:postId')
     .get( getComments )
 
 module.exports = router;

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ebedf3;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #7c9db9;
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>avatar</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="svg">
+      <circle class="cls-1" cx="200" cy="200" r="200"/>
+      <g>
+        <circle class="cls-2" cx="200.42" cy="158.56" r="74.46"/>
+        <path class="cls-3" d="M328,352.65s8.32-92.24-62.26-116.34a89.75,89.75,0,0,1-131.56,0C63.64,260.41,72,352.65,72,352.65v.64a200,200,0,0,0,256.38.45v-1.09Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

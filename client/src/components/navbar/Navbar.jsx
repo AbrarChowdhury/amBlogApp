@@ -1,7 +1,7 @@
-import { Button, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import am from '../../assets/amLogo.png'
-import PostForm from '../blogCard/postForm/PostForm';
+import PostForm from '../postForm/PostForm';
 import "./navbar.styles.scss"
 
 function Navbar() {

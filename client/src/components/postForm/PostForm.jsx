@@ -41,7 +41,14 @@ function PostForm() {
         body: JSON.stringify(post),
         headers: {"Content-type": "application/json; charset=UTF-8"}
       }).then(response => response.json())
-      .then(json => console.log("got this back",json))
+      .then(json => {
+        setPost({
+          title:"",
+          content:"",
+          date:new Date().toISOString()
+        })
+        handleClose()
+      })
       .catch(err=>console.log(err))
 
   }
@@ -57,7 +64,7 @@ function PostForm() {
             <p>{post.date}</p>
             <form onSubmit={handleSubmit}>
                 <TextField label="Title" name="title" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.title}/>
-                <TextField label="Content" name="content" variant="outlined" fullWidth multiline sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>
+                <TextField label="Content" name="content" variant="outlined" fullWidth multiline rows={4} sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>
                 <Button type="submit"  variant='outlined' sx={ { borderRadius: 2, float:"right" } }>Create New Post</Button>
                 <Button  variant='outlined' sx={ { borderRadius: 2 } } color="error">Cancel</Button>
             </form>

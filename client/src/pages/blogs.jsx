@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import {  Grid } from '@mui/material'
 import BlogCard from '../components/blogCard/BlogCard'
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ function Blogs() {
   
   return (
     <div>
+      
       <Grid container  spacing={2} >
         {
           posts?.map( post=>(

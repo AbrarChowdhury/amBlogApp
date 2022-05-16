@@ -7,7 +7,7 @@ const createComment = ((req, res) => {
 })
 
 const getComments = ((req, res) => {
-    Comment.findOne({ postId: req.params.postId })
+    Comment.find({ postId: req.params.postId })
     .then(result => res.status(200).json({ result }))
     .catch(() => res.status(404).json({msg: 'comment not found'}))
 })

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Container, Typography} from "@mui/material"
+import {Container, Divider, Typography} from "@mui/material"
 import Comments from '../components/comments/Comments'
 import {useParams} from "react-router-dom"
 function Blog() {
@@ -14,6 +14,7 @@ function Blog() {
   console.log(params.id)
   return (
     <Container>
+    <Divider style={{margin:"30px 0"}}/>
       <Typography gutterBottom variant="h2" component="div">
         {post?.title}
       </Typography>

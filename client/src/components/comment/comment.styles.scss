@@ -1,0 +1,20 @@
+.commentReply{
+    margin: 15px 0 0 15px;
+    img{
+        height: 40px;
+    }
+    .titleContainer{
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        align-items: end;
+        gap: 10px;
+        h4{
+            margin: 0;
+            color: #1565C0;
+        }
+        p{
+            margin: 0;
+            font-size: smaller;
+        }
+    }
+}
