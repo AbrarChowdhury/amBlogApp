@@ -1,17 +1,27 @@
-import React from 'react'
-import {Typography} from "@mui/material"
-
+import React, { useEffect, useState } from 'react'
+import {Container, Typography} from "@mui/material"
+import Comments from '../components/comments/Comments'
+import {useParams} from "react-router-dom"
 function Blog() {
-  const title ="Lorem Ipsum", content="Fugiat fugiat nisi proident aliqua occaecat Lorem nostrud ullamco officia sint laboris minim. Lorem dolore id aliqua veniam cupidatat ullamco aliquip do do velit eu officia occaecat. Ea elit laborum nisi non magna eu qui adipisicing duis. Enim Lorem nisi amet exercitation officia nostrud qui amet elit mollit non. Elit dolor aute nisi occaecat quis amet."
+  const [post,setPost]=useState(null)
+  let params = useParams();
+  useEffect(() => {
+    fetch(`/api/post/${params.id}`)
+    .then(res=>res.json())
+    .then(json=>setPost(json.result))
+    .catch(err=>console.log(err))
+  }, [])
+  console.log(params.id)
   return (
-    <div>
+    <Container>
       <Typography gutterBottom variant="h2" component="div">
-        {title}
+        {post?.title}
       </Typography>
       <Typography gutterBottom variant="body1" component="div">
-        {content}
+        {post?.content}
       </Typography>
-    </div>
+      <Comments postId={[params.id]}/>
+    </Container>
     
   )
 }

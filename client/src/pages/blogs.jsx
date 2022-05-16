@@ -1,14 +1,25 @@
 import { Grid } from '@mui/material'
 import BlogCard from '../components/blogCard/BlogCard'
 import Pagination from '@mui/material/Pagination';
+import { useEffect, useState } from 'react';
 function Blogs() {
+
+  const [posts,setPosts]=useState(null)
+
+  useEffect(() => {
+    fetch("/api/post")
+    .then(res=>res.json())
+    .then(json=>setPosts(json.result))
+    .catch(err=>console.log(err))
+  }, [])
+  
   return (
     <div>
       <Grid container  spacing={2} >
         {
-          [1,2,3,4,5,6,7,8].map(e=>(
+          posts?.map( post=>(
             <Grid item xs={12} md={6}>
-              <BlogCard id={"abc"}/>
+              <BlogCard {...post} key={post._id}/>
             </Grid>
             )
           )
