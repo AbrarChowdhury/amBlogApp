@@ -13,7 +13,7 @@ const createPost = ((req, res) => {
 })
 
 const getPost = ((req, res) => {
-    Product.findOne({ _id: req.params.postId })
+    Post.findOne({ _id: req.params.postId })
         .then(result => res.status(200).json({ result }))
         .catch(() => res.status(404).json({msg: 'Post not found'}))
 })

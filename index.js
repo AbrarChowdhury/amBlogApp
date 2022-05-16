@@ -10,8 +10,7 @@ const postRoutes = require("./server/routes/post.routes");
 
 const path = require("path");
 const app = express();
-const http = require("http");
-const server = http.createServer(app);
+
 
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
@@ -25,12 +24,13 @@ app.use("/", postRoutes);
 
 
 // connect to the database
-mongoose.connect(config.mongoUri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => console.log(`Database connected successfully`))
-    .catch((err) => console.log(err));
+mongoose.connect(
+    config.mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log(`Database connected successfully`))
+.catch((err) => console.log(err));
 
 
 mongoose.Promise = global.Promise;
@@ -43,4 +43,3 @@ app.listen(config.serverPort, () => {
     console.log(`Example app listening at http://localhost:${config.serverPort}`);
 });
 
-module.exports = { app, mongoose, server };
