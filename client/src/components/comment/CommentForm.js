@@ -40,8 +40,8 @@ function CommentForm({parentId, hideForm}) {
     parentId?
       <CardContent>
         <form onSubmit={handleSubmit}>
-            <TextField placeholder="Name" name="userName" variant="outlined" size="small" fullWidth sx={{marginBottom:1, background:'white'}} onChange={handleChange} value={comment.userName}/>
-            <TextField placeholder="Comment" name="comment" variant="outlined" size="small" fullWidth sx={{marginBottom:1, background:'white'}} onChange={handleChange} value={comment.comment} multiline/>
+            <TextField required placeholder="Name" name="userName" variant="outlined" size="small" fullWidth sx={{marginBottom:1, background:'white'}} onChange={handleChange} value={comment.userName}/>
+            <TextField required placeholder="Comment" name="comment" variant="outlined" size="small" fullWidth sx={{marginBottom:1, background:'white'}} onChange={handleChange} value={comment.comment} multiline/>
             <Button type="submit" >Reply</Button>
         </form>
       </CardContent>
@@ -49,8 +49,8 @@ function CommentForm({parentId, hideForm}) {
       <Card sx={{margin:"20px 0"}}>
         <CardContent>
         <form onSubmit={handleSubmit}>
-            <TextField label="Name" name="userName" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} value={comment.userName}/>
-            <TextField label="Comment" name="comment" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} value={comment.comment} multiline rows={3}/>
+            <TextField required label="Name" name="userName" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} value={comment.userName}/>
+            <TextField required label="Comment" name="comment" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} value={comment.comment} multiline rows={3}/>
             <Button type="submit" variant="contained">Submit</Button>
         </form>
         </CardContent>

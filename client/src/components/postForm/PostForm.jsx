@@ -21,7 +21,7 @@ const style = {
 function PostForm() {
   const navigate = useNavigate()
 
-  const { setPosts, setTotalPage } = useContext(PostContext)
+  const { triggerUpdate } = useContext(PostContext)
   const [open, setOpen] = useState(false)
   const [post, setPost] = useState({ title:"",content:""})
 
@@ -43,10 +43,7 @@ function PostForm() {
       })
       .then(res=>res.json())
       .then(({result, pages})=>{
-        console.log(result)
-        console.log([...result])
-        setPosts([...result])
-        setTotalPage(pages)
+        triggerUpdate()
         resetForm()
         handleClose()
         navigate("/")
@@ -64,8 +61,8 @@ function PostForm() {
             <h2>Create a new post</h2>
             <p>{moment().format('DD/MM/YY')}</p>
             <form onSubmit={handleSubmit}>
-                <TextField label="Title" name="title" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.title}/>
-                <TextField label="Content" name="content" variant="outlined" fullWidth multiline rows={4} sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>
+                <TextField required label="Title" name="title" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.title}/>
+                <TextField required label="Content" name="content" variant="outlined" fullWidth multiline rows={4} sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>
                 <Button type="submit"  variant='outlined' sx={ { borderRadius: 2, float:"right" } }>Create New Post</Button>
                 <Button onClick={handleClose} variant='outlined' sx={ { borderRadius: 2 } } color="error">Cancel</Button>
             </form>

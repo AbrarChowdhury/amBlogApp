@@ -1,11 +1,10 @@
-import {  Grid, LinearProgress  } from '@mui/material'
+import {  Grid, LinearProgress, Pagination  } from '@mui/material'
 import BlogCard from '../components/blogCard/BlogCard'
-import Pagination from '@mui/material/Pagination';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react'
 import {PostContext} from "../context/postContext"
 
 function Blogs() {
-  const { posts, setPosts, page, setPage, totalPage, setTotalPage } = useContext(PostContext);
+  const { posts, setPosts, page, setPage, totalPage, setTotalPage, isUpdated } = useContext(PostContext);
   const [isFetching, setFetching] = useState(true)
   const handleChange = (value) => {
     setPage(value)
@@ -20,7 +19,7 @@ function Blogs() {
       setFetching(false)
     })
     .catch(err=>console.log(err))
-  }, [page])
+  }, [page, isUpdated])
   
   return (
     <div>
