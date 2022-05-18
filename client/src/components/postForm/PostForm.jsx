@@ -67,7 +67,7 @@ function PostForm() {
                 <TextField label="Title" name="title" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.title}/>
                 <TextField label="Content" name="content" variant="outlined" fullWidth multiline rows={4} sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>
                 <Button type="submit"  variant='outlined' sx={ { borderRadius: 2, float:"right" } }>Create New Post</Button>
-                <Button  variant='outlined' sx={ { borderRadius: 2 } } color="error">Cancel</Button>
+                <Button onClick={handleClose} variant='outlined' sx={ { borderRadius: 2 } } color="error">Cancel</Button>
             </form>
             
         </Box>
