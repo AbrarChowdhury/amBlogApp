@@ -27,7 +27,7 @@ function Blogs() {
       <Grid container  spacing={2} >
         {
           posts?.map( post=>(
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} key={post._id}>
               <BlogCard {...post} key={post._id}/>
             </Grid>
             )

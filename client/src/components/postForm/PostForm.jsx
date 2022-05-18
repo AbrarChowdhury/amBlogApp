@@ -43,7 +43,9 @@ function PostForm() {
       })
       .then(res=>res.json())
       .then(({result, pages})=>{
-        setPosts(result)
+        console.log(result)
+        console.log([...result])
+        setPosts([...result])
         setTotalPage(pages)
         resetForm()
         handleClose()

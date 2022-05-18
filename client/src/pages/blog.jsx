@@ -12,7 +12,6 @@ function Blog() {
     .then(json=>setPost(json.result))
     .catch(err=>console.log(err))
   }, [])
-  console.log(params.id)
   return (
     <Container>
     <Divider style={{margin:"30px 0"}}/>
@@ -25,7 +24,7 @@ function Blog() {
       <Typography gutterBottom variant="body1" component="div">
         {post?.content}
       </Typography>
-      <Comments postId={[params.id]}/>
+      <Comments postId={params.id}/>
     </Container>
     
   )

@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { Button, Card, CardContent, TextField } from '@mui/material'
-import {useParams} from 'react-router-dom'
-function CommentForm({parentId}) {
+import { useParams } from 'react-router-dom'
+import { CommentContext } from "../../context/commentContext"
 
+function CommentForm({parentId}) {
+    const {comments, setComments, triggerUpdate} = useContext(CommentContext)
     let params = useParams();
-    const [comment, setComment] = React.useState({
+    const [comment, setComment] = useState({
       userName:"",
       comment:"",
       parentId:parentId||null,
@@ -19,17 +21,14 @@ function CommentForm({parentId}) {
 
     const handleSubmit = (e)=>{
       e.preventDefault()
-      console.log(comment)
       fetch(`/api/comment`, {
         method: "POST",
         body: JSON.stringify(comment),
         headers: {"Content-type": "application/json; charset=UTF-8"}
-      }).then(response => setComment({
-        userName:"",
-        comment:"",
-        parentId:parentId||null,
-        postId:params.id,
-      }))
+      }).then(res => {
+        setComment({ userName:"", comment:""})
+        triggerUpdate()
+      })
       .catch(err=>console.log(err))
     }
     
