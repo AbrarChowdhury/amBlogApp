@@ -5,13 +5,22 @@ import { useEffect, useState } from 'react';
 function Blogs() {
 
   const [posts,setPosts]=useState(null)
-
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [searchInput, setSearchInput] = useState('');
+  const handleChange = (searchInput, value) => {
+    console.log(searchInput, value)
+    setPage(value)
+  }
   useEffect(() => {
-    fetch("/api/post")
+    fetch(`/api/${page}`)
     .then(res=>res.json())
-    .then(json=>setPosts(json.result))
+    .then(({result, pages})=>{
+      setPosts(result)
+      setTotalPage(pages)
+    })
     .catch(err=>console.log(err))
-  }, [])
+  }, [page])
   
   return (
     <div>
@@ -27,7 +36,7 @@ function Blogs() {
         }
       </Grid>
       <div style={{display:"flex", justifyContent:"center", padding:"20px"}}>
-        <Pagination  count={10} variant="outlined" color='primary' size='large'/>
+        <Pagination page={page} count={totalPage}  onChange={(event,value)=>handleChange(searchInput,value)} variant="outlined" color='primary' size='large'/>
       </div>
     </div>
   )

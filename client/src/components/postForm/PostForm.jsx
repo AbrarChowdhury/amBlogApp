@@ -1,6 +1,7 @@
 import { Button, Modal,Box, TextField  } from '@mui/material'
 import React from 'react'
-
+import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -12,19 +13,14 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-function formatted_date(d)
-{
-   var result="";
-   result += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate() 
-   return result;
-}
+
 
 function PostForm() {
+  const navigate = useNavigate()
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = React.useState({
       title:"",
       content:"",
-      date:new Date().toISOString()
   });
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -45,9 +41,9 @@ function PostForm() {
         setPost({
           title:"",
           content:"",
-          date:new Date().toISOString()
         })
         handleClose()
+        navigate("/")
       })
       .catch(err=>console.log(err))
 
@@ -61,7 +57,7 @@ function PostForm() {
     >
         <Box sx={style}>
             <h2>Create a new post</h2>
-            <p>{post.date}</p>
+            <p>{moment().format('DD/MM/YY')}</p>
             <form onSubmit={handleSubmit}>
                 <TextField label="Title" name="title" variant="outlined" fullWidth sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.title}/>
                 <TextField label="Content" name="content" variant="outlined" fullWidth multiline rows={4} sx={{marginBottom:2}} onChange={handleChange} defaultValue={post.content}/>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Container, Divider, Typography} from "@mui/material"
 import Comments from '../components/comments/Comments'
 import {useParams} from "react-router-dom"
+import moment from 'moment'
 function Blog() {
   const [post,setPost]=useState(null)
   let params = useParams();
@@ -17,6 +18,9 @@ function Blog() {
     <Divider style={{margin:"30px 0"}}/>
       <Typography gutterBottom variant="h2" component="div">
         {post?.title}
+      </Typography>
+      <Typography gutterBottom variant="body1" component="div">
+        {moment(post?.createdAt).format('DD/MM/YY')}
       </Typography>
       <Typography gutterBottom variant="body1" component="div">
         {post?.content}
