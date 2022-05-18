@@ -1,4 +1,5 @@
 const Post = require('../models/post.model');
+const chunk = (arr, size) => arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), []);
 
 const getPosts = ((req, res) => {
     Post.find({})
@@ -18,5 +19,15 @@ const getPost = ((req, res) => {
         .catch(() => res.status(404).json({msg: 'Post not found'}))
 })
 
+const getPostsByPage = ((req, res) => {
+    Post.find({})
+        .then(result => {
+            const pages = Math.ceil(result.length/4)
+            result = result.reverse()
+            result=chunk( result, 4 )[req.params.page-1]
+            res.status(200).json({ result, pages })
+        })
+        .catch(error => res.status(500).json({msg: error}))
+})
 
-module.exports = { getPosts, createPost, getPost }
+module.exports = { getPosts, createPost, getPost, getPostsByPage }

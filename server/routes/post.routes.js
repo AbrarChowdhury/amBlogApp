@@ -1,6 +1,9 @@
-const { getPosts, createPost, getPost } = require('../controllers/post.controller');
+const { getPosts, getPostsByPage, createPost, getPost } = require('../controllers/post.controller');
 const express = require('express')
 const router = express.Router();
+
+router.route('/api/:page')
+    .get(getPostsByPage)
 
 router.route('/api/post')
     .get(getPosts)

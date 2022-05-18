@@ -5,7 +5,7 @@ const CommentSchema = new mongoose.Schema({
     parentId:String,
     userName:String,
     postId : String,
-})
+},{timestamps: true})
 
 const Comment = mongoose.model('Comment', CommentSchema)
 
