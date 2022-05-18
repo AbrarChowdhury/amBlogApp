@@ -36,8 +36,18 @@ function Blogs() {
       </Grid>
 
       {isFetching && <LinearProgress sx={{marginTop:"20px"}}/>}
-      <div style={{display:"flex", justifyContent:"center", padding:"20px"}}>
-        {totalPage&&<Pagination sx={{marginTop:isFetching?"-24px":"0px"}} page={page} count={totalPage}  onChange={(event,value)=>handleChange(value)} variant="outlined" color='primary' size='large'/>}
+      <div style={{display:"flex", justifyContent:"center", padding:"20px 0"}}>
+        {totalPage&&
+          <Pagination 
+            siblingCount={0} 
+            boundaryCount={2}
+            sx={{marginTop:isFetching?"-24px":"0px"}} 
+            page={page} 
+            count={totalPage}  
+            onChange={(event,value)=>handleChange(value)} 
+            variant="outlined" 
+            color='primary' 
+            />}
       </div>
     </div>
   )

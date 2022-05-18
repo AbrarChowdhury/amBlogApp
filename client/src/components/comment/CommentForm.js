@@ -26,9 +26,10 @@ function CommentForm({parentId, hideForm}) {
         body: JSON.stringify(comment),
         headers: {"Content-type": "application/json; charset=UTF-8"}
       }).then(res => {
-        setComment({ userName:"", comment:""})
+        setComment({  ...comment, userName:"", comment:""})
         triggerUpdate()
-        hideForm()
+        parentId && hideForm()
+        console.log()
       })
       .catch(err=>console.log(err))
     }
