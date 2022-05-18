@@ -1,6 +1,8 @@
 import Layout from "./components/layout/Layout";
 import Blog from "./pages/blog";
 import Blogs from "./pages/blogs";
+import PostContextProvider from "./context/postContext";
+import CommentContextProvider from "./context/commentContext";
 import {
   HashRouter as Router,
   Routes,
@@ -10,6 +12,8 @@ function App() {
   return (
     <div className="App">
       <Router>  
+      <PostContextProvider>
+      <CommentContextProvider>
       <Layout>
       
         <Routes>
@@ -18,6 +22,8 @@ function App() {
         </Routes>
       
       </Layout>
+      </CommentContextProvider>
+      </PostContextProvider>
       </Router>
     </div>
   );

@@ -1,30 +1,29 @@
-import {  Grid } from '@mui/material'
+import {  Grid, LinearProgress  } from '@mui/material'
 import BlogCard from '../components/blogCard/BlogCard'
 import Pagination from '@mui/material/Pagination';
-import { useEffect, useState } from 'react';
-function Blogs() {
+import { useEffect, useState, useContext } from 'react';
+import {PostContext} from "../context/postContext"
 
-  const [posts,setPosts]=useState(null)
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1);
-  const [searchInput, setSearchInput] = useState('');
-  const handleChange = (searchInput, value) => {
-    console.log(searchInput, value)
+function Blogs() {
+  const { posts, setPosts, page, setPage, totalPage, setTotalPage } = useContext(PostContext);
+  const [isFetching, setFetching] = useState(true)
+  const handleChange = (value) => {
     setPage(value)
   }
   useEffect(() => {
+    setFetching(true)
     fetch(`/api/${page}`)
     .then(res=>res.json())
     .then(({result, pages})=>{
       setPosts(result)
       setTotalPage(pages)
+      setFetching(false)
     })
     .catch(err=>console.log(err))
   }, [page])
   
   return (
     <div>
-      
       <Grid container  spacing={2} >
         {
           posts?.map( post=>(
@@ -35,8 +34,10 @@ function Blogs() {
           )
         }
       </Grid>
+
+      {isFetching && <LinearProgress sx={{marginTop:"20px"}}/>}
       <div style={{display:"flex", justifyContent:"center", padding:"20px"}}>
-        <Pagination page={page} count={totalPage}  onChange={(event,value)=>handleChange(searchInput,value)} variant="outlined" color='primary' size='large'/>
+        {totalPage&&<Pagination sx={{marginTop:isFetching?"-24px":"0px"}} page={page} count={totalPage}  onChange={(event,value)=>handleChange(value)} variant="outlined" color='primary' size='large'/>}
       </div>
     </div>
   )

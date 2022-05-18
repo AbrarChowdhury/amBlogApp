@@ -1,7 +1,10 @@
 import { Button, Modal,Box, TextField  } from '@mui/material'
-import React from 'react'
+import { useState, useContext } from 'react';
+import { PostContext } from '../../context/postContext';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
+
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -17,13 +20,14 @@ const style = {
 
 function PostForm() {
   const navigate = useNavigate()
-  const [open, setOpen] = React.useState(false);
-  const [post, setPost] = React.useState({
-      title:"",
-      content:"",
-  });
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const { setPosts, setTotalPage } = useContext(PostContext)
+  const [open, setOpen] = useState(false)
+  const [post, setPost] = useState({ title:"",content:""})
+
+  const resetForm = () => setPost({title:"",content:""})
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -36,17 +40,16 @@ function PostForm() {
         method: "POST",
         body: JSON.stringify(post),
         headers: {"Content-type": "application/json; charset=UTF-8"}
-      }).then(response => response.json())
-      .then(json => {
-        setPost({
-          title:"",
-          content:"",
-        })
+      })
+      .then(res=>res.json())
+      .then(({result, pages})=>{
+        setPosts(result)
+        setTotalPage(pages)
+        resetForm()
         handleClose()
         navigate("/")
       })
       .catch(err=>console.log(err))
-
   }
   return (
     <>
