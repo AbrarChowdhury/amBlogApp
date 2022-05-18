@@ -3,7 +3,7 @@ import { Button, Card, CardContent, TextField } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { CommentContext } from "../../context/commentContext"
 
-function CommentForm({parentId}) {
+function CommentForm({parentId, hideForm}) {
     const {comments, setComments, triggerUpdate} = useContext(CommentContext)
     let params = useParams();
     const [comment, setComment] = useState({
@@ -28,6 +28,7 @@ function CommentForm({parentId}) {
       }).then(res => {
         setComment({ userName:"", comment:""})
         triggerUpdate()
+        hideForm()
       })
       .catch(err=>console.log(err))
     }
